@@ -1,0 +1,8 @@
+@Html.Partial("header.cshtml")
+
+<form action="/settings/save" method="post">
+  <label for="rock">Rock</label><input type="text" name="rock" value="@Model.GetRock()">
+  <label for="paper">Paper</label><input type="text" name="paper" value="@Model.GetPaper()">
+  <label for="scissors">Scissors</label><input type="text" name="scissors" value="@Model.GetScissors()">
+  <input type="submit" name="submit" value="Save Changes">
+</form>

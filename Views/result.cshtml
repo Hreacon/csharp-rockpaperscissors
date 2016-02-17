@@ -1,1 +1,14 @@
 @Html.Partial("header.cshtml")
+<div class="player1">
+@Model.GetPlayer1Choice()
+</div>
+<div class="countdown">
+@Model.GetWinner()
+</div>
+<div class="player2">
+@Model.GetPlayer2Choice()
+</div>
+
+<form class="" action="/" method="get">
+  <input type="submit" name="name" value="Push Space to Play Again" autofocus>
+</form>

@@ -28,6 +28,9 @@ Press Start to PLAY
     }
   </table>
 </div>
+<form class="settings" action="/settings" method="get">
+  <input type="submit" name="name" value="Change Settings">
+</form>
 <input type="text" name="name" id="input" value="" autofocus>
 <script type="text/javascript">
   player1keys = "@foreach(var key in @Model.GetGameKeysPlayer1()) {

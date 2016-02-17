@@ -5,8 +5,9 @@ $(document).ready(function() {
   var player2 = '';
   var gameStarted = false;
 
-  $("input").focusout(function() {
-    $("input").focus();
+  $("#input").focusout(function() {
+    console.log("Focus!");
+    $("#input").focus();
   });
 
   $("#input").keypress(function(event) {
@@ -22,8 +23,6 @@ $(document).ready(function() {
       var TimeoutID = window.setTimeout(function(){$(".countdown").text("0");},4500);
       var TimeoutID = window.setTimeout(function(){window.location.href="/";},6000);
       // $(".countdown").text("2").delay(10000);
-
-
     }
 
     if(gameStarted) {
@@ -42,6 +41,6 @@ $(document).ready(function() {
         window.location.href="/play/"+player1+"/"+player2;
       }
     }
-    $("input").val("");
+    $("#input").val("");
   });
 });

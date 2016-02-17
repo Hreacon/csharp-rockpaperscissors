@@ -22,20 +22,16 @@ namespace RockPaperScissorsNS.Objects
     private string _rock;
     private string _paper;
     private string _scissors;
+    private static RockPaperScissors _rps;
 
     public RockPaperScissors()
     {
       _rock = "Rock";
       _paper = "Paper";
       _scissors = "Scissors";
-      _startKeysPlayer1['q'] = _rock;
-      _startKeysPlayer1['w'] = _paper;
-      _startKeysPlayer1['e'] = _scissors;
-      _startKeysPlayer2['p'] = _rock;
-      _startKeysPlayer2['o'] = _paper;
-      _startKeysPlayer2['i'] = _scissors;
       _keysPlayer1 = _startKeysPlayer1;
       _keysPlayer2 = _startKeysPlayer2;
+      Save();
     }
 
     public Dictionary<char,string> GetGameKeysPlayer1() { return _keysPlayer1; }
@@ -43,12 +39,39 @@ namespace RockPaperScissorsNS.Objects
     public string GetRock() { return _rock; }
     public string GetPaper() { return _paper; }
     public string GetScissors() { return _scissors; }
+    public void SetRock(string rockIn) {
+      ResetName(_keysPlayer1, _rock, rockIn);
+      ResetName(_keysPlayer2, _rock, rockIn);
+      _rock = rockIn;
+    }
+    public void SetPaper(string paperIn) {
+      ResetName(_keysPlayer1, _paper, paperIn);
+      ResetName(_keysPlayer2, _paper, paperIn);
+      _paper = paperIn;
+    }
+    public void SetScissors(string scissorsIn) {
+      ResetName(_keysPlayer1, _scissors, scissorsIn);
+      ResetName(_keysPlayer2, _scissors, scissorsIn);
+      _scissors = scissorsIn;
+    }
 
-    public void SetPlayer1Choice(char choice) { _choicePlayer1 = _keysPlayer1[choice]; }
+    public void   SetPlayer1Choice(char choice) { _choicePlayer1 = _keysPlayer1[choice]; }
     public string GetPlayer1Choice() { return _choicePlayer1; }
-    public void SetPlayer2Choice(char choice) { _choicePlayer2 = _keysPlayer2[choice]; }
+    public void   SetPlayer2Choice(char choice) { _choicePlayer2 = _keysPlayer2[choice]; }
     public string GetPlayer2Choice() { return _choicePlayer2; }
+    public void   Save() { _rps = this; }
 
+    private void ResetName(Dictionary<char, string> dict, string oldValue, string newValue)
+    {
+      foreach(KeyValuePair<char, string> pair in dict)
+      {
+        if (pair.Value == oldValue)
+        {
+          dict[pair.Key] = newValue;
+          break;
+        }
+      }
+    }
     public string GetWinner()
     {
       string output = "Tie!";
@@ -85,6 +108,7 @@ namespace RockPaperScissorsNS.Objects
       return output;
     }
 
+    public static RockPaperScissors GetStoredGame() { return _rps; }
     public static Dictionary<char,string> GetOriginalGameKeysPlayer1() { return _startKeysPlayer1; }
     public static Dictionary<char,string> GetOriginalGameKeysPlayer2() { return _startKeysPlayer2; }
   } // end class
