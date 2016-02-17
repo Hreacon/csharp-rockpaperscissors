@@ -15,23 +15,28 @@ namespace RockPaperScissorsNS
 
       BDD:
       Tests -
-      Object provides game keys for player 1 and 2
+
       object takes players choices
       object returns players choices in english format
       object returns who won, or if its a draw
       object can customize keys to play with
-      settings page lets uesr change keys
 
     /**/
+    // Object provides game keys for player 1 and 2
     [Fact]
     public void GetGameKeysPlayerX_ProvidesKeysToPlayWith()
     {
       RockPaperScissors rps = new RockPaperScissors();
-      Dictionary<char, string> keys = new Dictionary<char, string>(){};
-      keys.Add('q', "Rock");
-      keys.Add('w', "Paper");
-      keys.Add('e', "Scissors");
-      Assert.Equal(keys, rps.GetGameKeysPlayer1());
+      Dictionary<char, string> keys1 = new Dictionary<char, string>(){};
+      keys1.Add('q', "Rock");
+      keys1.Add('w', "Paper");
+      keys1.Add('e', "Scissors");
+      Assert.Equal(keys1, rps.GetGameKeysPlayer1());
+      Dictionary<char, string> keys2 = new Dictionary<char, string>() {};
+      keys2.Add('p', "Rock");
+      keys2.Add('o', "Paper");
+      keys2.Add('i', "Scissors");
+      Assert.Equal(keys2, rps.GetGameKeysPlayer2());
     }
     /* EXAMPLE
     // Have a queen object that knows what coordinants its at
