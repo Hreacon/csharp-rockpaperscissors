@@ -8,7 +8,8 @@ namespace RockPaperScissorsNS
     public HomeModule()
     {
       Get["/"] = _ => {
-        return View["header.cshtml"];
+        RockPaperScissors rps = new RockPaperScissors();
+        return View["play.cshtml", rps];
       };
     }
   }

@@ -28,35 +28,34 @@ input {
   border-radius:10px;
 }
 
-.link:hover {
+.player1 {
+  position: fixed;
+  top:10px;
+  left:10px;
+  margin-left:20px;
+}
+.player1 tr td, .player2 tr td {
+  border-top:1px solid black;
+  text-align: center;
+  padding:2px;
+}
+.countdown {
+  margin: auto;
+  text-align: center;
+  font-size: 3em;
+  display: block;
+}
+.player2 {
+  position: fixed;
+  top:10px;
+  right:10px;
+  margin-right: 20px;
+}
+input {
   color:white;
-  background: black;
-}
-
-.chessboard {
-  display: block;
-  width: 800px;
-  height:800px;
-  border:1px solid black;
-}
-.chessboard a {
-  display: block;
-  width:100px;
-  height:100px;
-  float:left;
-}
-
-.odd:nth-child(even) {
-  background: black;
-}
-.even:nth-child(odd) {
-  background: black;
-}
-
-.chessboard a:hover {
-  background: green;
-}
-
-.chessboard .queen {
-  background:green;
+  background: white;
+  border-color: white;
+  position: fixed;
+  bottom:0;
+  border-collapse: collapse;
 }

@@ -16,9 +16,8 @@ namespace RockPaperScissorsNS
       BDD:
       Tests -
 
-      object takes players choices
-      object returns players choices in english format
-      object returns who won, or if its a draw
+
+
       object can customize keys to play with
 
     /**/
@@ -38,15 +37,31 @@ namespace RockPaperScissorsNS
       keys2.Add('i', "Scissors");
       Assert.Equal(keys2, rps.GetGameKeysPlayer2());
     }
-    /* EXAMPLE
-    // Have a queen object that knows what coordinants its at
+
+    // object takes players choices
+    // object returns players choices in english format
     [Fact]
-    public void QueenAttack_ForCoordinants_SeeCoordinants()
+    public void GetPlayerChoice_RockPaoerScissors()
     {
-      QueenAttack queen = new QueenAttack(8, 2);
-      Assert.Equal(8, queen.GetX());
-      Assert.Equal(2, queen.GetY());
+      RockPaperScissors rps = new RockPaperScissors();
+      rps.SetPlayer1Choice('q');
+      Assert.Equal("Rock", rps.GetPlayer1Choice());
+      rps.SetPlayer2Choice('p');
+      Assert.Equal("Rock", rps.GetPlayer2Choice());
     }
-    /**/
+
+    // object returns who won, or if its a draw
+    [Fact]
+    public void GetWinner_ForPlayerChoices_PlayerXWin()
+    {
+      RockPaperScissors rps = new RockPaperScissors();
+      rps.SetPlayer2Choice('p');
+      rps.SetPlayer1Choice('q');
+      Assert.Equal("Tie!", rps.GetWinner());
+      rps.SetPlayer2Choice('o');
+      Assert.Equal("Player 2 Wins!", rps.GetWinner());
+      rps.SetPlayer1Choice('e');
+      Assert.Equal("Player 1 Wins!", rps.GetWinner());
+    }
   }
 }

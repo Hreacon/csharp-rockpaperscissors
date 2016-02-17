@@ -1,0 +1,42 @@
+@Html.Partial("header.cshtml")
+
+<!-- display the key commands to each player -->
+<div class="player1">
+  <table>
+    <tr>
+      <th>Key</th>
+      <th>Action</th>
+    </tr>
+    @foreach(var item in Model.GetGameKeysPlayer1())
+    {
+      <tr><td>@item.Key</td><td>@item.Value</td></tr>
+    }
+  </table>
+</div>
+<div class="countdown">
+Press Start to PLAY
+</div>
+<div class="player2">
+  <table>
+    <tr>
+      <th>Key</th>
+      <th>Action</th>
+    </tr>
+    @foreach(var item in Model.GetGameKeysPlayer2())
+    {
+      <tr><td>@item.Key</td><td>@item.Value</td></tr>
+    }
+  </table>
+</div>
+<input type="text" name="name" id="input" value="" autofocus>
+<script type="text/javascript">
+  player1keys = "@foreach(var key in @Model.GetGameKeysPlayer1()) {
+    @key.Key
+  }";
+  player2keys = "@foreach(var key in @Model.GetGameKeysPlayer2()) {
+    @key.Key
+  }";
+</script>
+<!-- show the players they have to press space to start the game
+upon start count down from 3 to 1 waiting for keypresses
+if no keypresses restart the game -->
